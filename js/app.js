@@ -8,8 +8,8 @@ var cartaPrimera, cartaSegunda;
 var colorDelante = "orange";
 var colorCanvas = "#a599ff";
 var colorAtras = "blue";
-var inicioX = 45;
-var inicioY = 50;
+var inicioX = 70;
+var inicioY = 100;
 var cartaMargen = 30;
 var cartaLon = 30;
 var cartaAncho = 100;
@@ -22,8 +22,12 @@ var pares = [
 ["maestra1.png","maestra2.png"],
 ["doc1.png","doc2.png"],
 ["niño1.png","niño2.png"],
-["carta05.png","carta05.png"],
-["carta06.png","carta06.png"]
+["bus1.png","bus2.png"],
+["llorando1.png","llorando2.png"],
+["papa1.png","papa2.png"],
+["trabajando1.png","trabajando2.png"],
+["igu.png","igu2.png"],
+["des.png","des2.png"],
 ];
  
  var imagenTras = new Image();
@@ -52,44 +56,27 @@ function dibujaCarta(){
 	ctx.drawImage(imagenTras,this.x, this.y, this.ancho, this.largo);
 }
 
-function tablero(){
-	var i;
-	var carta;
-	var x = inicioX;
-	var y = inicioY;
-	for(i=0; i<4; i++)	{
-		img = "images/"+pares[i][0];
-		carta = new Carta(x,y,cartaAncho, cartaLargo, img, i);
-		cartas_array.push(carta);
-		carta.dibuja();
-		
-		//segunda carta
-		img = "images/"+pares[i][1];
-		carta = new Carta(x,y+cartaLargo+cartaMargen,cartaAncho, cartaLargo, img, i);
-		cartas_array.push(carta);
-		carta.dibuja();
-		//aumentapos posicion en X
-		//x+=cartaAncho + cartaMargen;
-		
-		x+=cartaAncho + cartaMargen;
-	}
-	x = inicioX;
-	for(i=4; i<6; i++)	{
-		
-		img = "images/"+pares[i][0];
-		carta = new Carta(x,y+cartaLargo+cartaMargen+cartaLargo+cartaMargen,cartaAncho, cartaLargo, img, i);
-		cartas_array.push(carta);
-		carta.dibuja();
-		//aumentapos posicion en X
-		x+=cartaAncho + cartaMargen;
-		
-		img = "images/"+pares[i][0];
-		carta = new Carta(x,y+cartaLargo+cartaMargen+cartaLargo+cartaMargen,cartaAncho, cartaLargo, img, i);
-		cartas_array.push(carta);
-		carta.dibuja();
-		//aumentapos posicion en X
-		x+=cartaAncho + cartaMargen;
-	}
+function tablero() {
+    var i;
+    var carta;
+    var x = inicioX;
+    var y = inicioY;
+
+    for (i = 0; i < pares.length; i++) {
+        // Primera carta del par
+        img = "images/" + pares[i][0];
+        carta = new Carta(x, y, cartaAncho, cartaLargo, img, i);
+        cartas_array.push(carta);
+        carta.dibuja();
+
+        // Segunda carta del par
+        img = "images/" + pares[i][1];
+        carta = new Carta(x, y + cartaLargo + cartaMargen, cartaAncho, cartaLargo, img, i);
+        cartas_array.push(carta);
+        carta.dibuja();
+
+        x += cartaAncho + cartaMargen;
+    }
 }
 
 function barajear(){
@@ -204,12 +191,15 @@ function aciertos(){
 	//alert (cartas);
 	ctx.save();
 	//ctx.fillStyle = "black";
-	if(cartas==6){
+
+	
+	if(cartas==10){
 		ctx.font = "bold 60px Comic";
 		ctx.clearRect(0, 0, miCanvas.width, miCanvas.height);
 		ctx.fillText("GAME OVER!!", 50,300);
 		//guarda datos
 	}else{
+		ctx.fillStyle = "white";
 		ctx.font = "normal 40px Verdana";
 		ctx.clearRect(3, 560, miCanvas.width, 200);
 		ctx.fillText("Aciertos: "+String(cartas), 30,590);

@@ -14,7 +14,9 @@ body {
     border: dotted 3px black;
     background: #00674a;
 }
-
+.titulo {
+    font-family: 'Quicksand', sans-serif;
+}
 
 /* Agrega una regla de estilo para la clase 'flipped' */
 .flipped {
