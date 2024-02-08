@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    text-align: center;
+}
+
+#canvas1 {
+    border: dotted 3px black;
+    background: #00674a;
+}
+
+
+/* Agrega una regla de estilo para la clase 'flipped' */
+.flipped {
+    transform: rotateY(180deg);
+    transition: transform 1s ease;
+}
